@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container" style="float:left;margin-top:10%;width:30%;height:100%;">
+        <ul>
+            <li>
+                GET/pet
+            </li>
+            <li>
+                POST/pet
+            </li>
+            <li>
+                GET/customer
+            </li>
+        </ul>
+    </div>
+    <div class="container" style="float:left;border:5px solid black;width:70%;">
+        <div class="card">
+            <div class="card-header">
+                <div class="form-row">
+                    <button class="btn-primary" style="width:5%;">Post</button><h5>/Pet</h5>&nbsp;&nbsp;&nbsp;&nbsp; <p id="description2"></p>
+                </div>
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>Parameters</p>
+                </blockquote>
+            </div>
+            <div class="card-header">
+                <div class="form-row">
+                    <h5 style="margin-right: 60%;">Name </h5><h5>Description</h5>
+                </div>
+            </div>
+            <div class="container" >
+                <div class="card-body" style="float: left; ">
+                    <blockquote class="blockquote mb-0">
+                        <h4>Body</h4>
+                        <h5>Object</h5>
+                        <h6>(body)</h6>
+                    </blockquote>
+                </div>
+
+
+                <div class="card-body" style="float: right; ">
+                    <blockquote class="blockquote mb-0">
+                        <h4 id="description"></h4>
+                        <div style="background:black;">
+                            <p id="descriptionBody" style="color:white;"><pre ><code ></code></pre></p>
+
+                        </div>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="card-header">
+                <h4>Response</h4>
+            </div>
+            <div class="card-header">
+                <div class="form-row">
+                    <h5 style="margin-right: 60%;">code </h5><h5>Description</h5>
+                </div>
+            </div>
+            <div class="container" >
+                <div class="card-body" style="float: left; ">
+                    <blockquote class="blockquote mb-0">
+                        <h4 id="code"></h4>
+
+                    </blockquote>
+                </div>
+
+                <div class="card-body" style="float: right; ">
+                    <blockquote class="blockquote mb-0">
+                        <h4 id="description1"></h4>
+                        <div style="background:black;">
+                            <pre id="response" style="color:white;"><code></code></pre>
+                        </div>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+
+    fetch("./pet_data.json")
+        .then(function(resp){
+        return resp.json();
+
+    })
+    .then(function(data){
+        // console.log(data.apiRoutes.pet.POST.request.body);
+        document.getElementById('descriptionBody').innerHTML = JSON.stringify(data.apiRoutes.pet.POST.request.body);
+        document.getElementById('code').innerHTML = JSON.stringify(data.apiRoutes.pet.POST.response.code);
+        document.getElementById('response').innerHTML = JSON.stringify(data.apiRoutes.pet.POST.response.data);
+        document.getElementById('description').innerHTML = JSON.stringify(data.apiRoutes.pet.POST.description);
+        document.getElementById('description1').innerHTML = JSON.stringify(data.apiRoutes.pet.POST.description);
+        document.getElementById('description2').innerHTML = JSON.stringify(data.apiRoutes.pet.POST.description);
+
+
+    });
+</script>
+</html>
